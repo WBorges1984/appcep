@@ -1,8 +1,8 @@
 import 'package:appcep/model/back4app.model.dart';
 import 'package:dio/dio.dart';
 
-class CepRepository {
-  Future<Back4AppModel> obterCep() async {
+class CepBack4AppRepository {
+  Future<Backs4AppModel> obterCep() async {
     var dio = Dio();
     dio.options.headers["X-Parse-Application-Id"] =
         "RKR4qwr3APaXdhyCRj6UMY1NTgkGz0WGx84gnOsL";
@@ -11,7 +11,7 @@ class CepRepository {
     dio.options.headers["Content-Type"] = "application/json";
     var result = await dio.get("https://parseapi.back4app.com/classes/cep");
     //print(result.data);
-    return Back4AppModel.fromMap(result.data);
+    return Backs4AppModel.fromJson(result.data);
     //return result.data;
   }
 }
